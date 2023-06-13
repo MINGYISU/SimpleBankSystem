@@ -208,6 +208,7 @@ int main() {
             continue;
         }
     }
+    delete[] acc;
 
     return 0;
 }
