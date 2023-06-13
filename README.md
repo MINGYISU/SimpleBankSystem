@@ -5,7 +5,7 @@ Upon running the program, users are presented with a menu where they can choose 
 
 If the user chooses to create a new account, they are prompted to input various details such as their first name, last name, address, social insurance number (SIN), deposit amount, and a password. The account information is stored in an array of "Account" objects.
 
-When logging in to an existing account, the user is prompted to enter their SIN (acting as the ID) and password. The program performs a search to find the matching account. If found, the user gains access to a menu of options to manage their account. These options include resetting the account password, making deposits, withdrawing funds, closing the account, or quitting the program.
+When logging in to an existing account, the user is prompted to enter their ID and password(While it is not a common practice, in this program, the Social Insurance Number (SIN) is utilized as the ID/Account Number for logging in. This simplification assumes that each SIN is unique, allowing for easier code implementation.). The program performs a search to find the matching account. If found, the user gains access to a menu of options to manage their account. These options include resetting the account password, making deposits, withdrawing funds, closing the account, or logout.
 
 The program handles dynamic resizing of the account array when reaching its capacity. It doubles the capacity and creates a new array, copies the existing account data into it, and updates the account pointer accordingly.
 
