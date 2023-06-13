@@ -1,5 +1,5 @@
 // Author: Mingyi Su
-// This program simulates a bank system from a client's 
+// This program simulates a bank system from the client's side
 
 #include <iostream>
 #include <string>
