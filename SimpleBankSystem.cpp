@@ -162,7 +162,7 @@ int main() {
                     cout << "DEPOSIT: Make a Deposit" << endl;
                     cout << "WITHDRAW: Make a Withdraw" << endl;
                     cout << "CLOSE: Close Your Account" << endl;
-                    cout << "QUIT: Quit" << endl;
+                    cout << "LOGOUT: Logout" << endl;
                     cout << "Select an option: ";
                     cin >> cmd;
                     if (cmd == "RESET") {
@@ -195,7 +195,7 @@ int main() {
                         cout << "Account Closure Confirmed" << endl;
                         buffer();
                         break;
-                    } else if (cmd == "QUIT") {
+                    } else if (cmd == "LOGOUT") {
                         break;
                     } else {
                         cout << "Unkown Command!";
