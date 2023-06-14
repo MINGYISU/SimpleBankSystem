@@ -69,6 +69,10 @@ public:
         m_password = new_pw;
     }
 
+    void resetADD(string new_add) {
+        m_address = new_add;
+    }
+
     void depositBal(int amt) {
         if (amt > 0) {
             m_deposit += amt;
@@ -159,6 +163,7 @@ int main() {
                     cout << acc[login];
                     cout << endl << "Enter the options below to manage your account" << endl;
                     cout << "RESET: Reset Your Password" << endl;
+                    cout << "LOCATION: Change your Address" << endl;
                     cout << "DEPOSIT: Make a Deposit" << endl;
                     cout << "WITHDRAW: Make a Withdraw" << endl;
                     cout << "TRANSFER: Make a Transfer" << endl;
@@ -171,6 +176,13 @@ int main() {
                         cin >> pw;
                         acc[login].resetPW(pw);
                         cout << "Password Updated!" << endl;
+                        buffer();
+                    } else if (cmd == "LOCATION") {
+                        cout << "Enter your new Address: ";
+                        getchar();
+                        getline(cin, input);
+                        acc[login].resetADD(input);
+                        cout << "Address Updated!" << endl;
                         buffer();
                     } else if (cmd == "DEPOSIT") {
                         cout << "Enter the amount to deposit: ";
