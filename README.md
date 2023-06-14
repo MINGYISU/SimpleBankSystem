@@ -1,5 +1,5 @@
 # SimpleBankSystem
-This C++ program simulates a user-side bank system. It allows users to become clients of a bank and provides functionality to create and manage bank accounts. The program utilizes object-oriented programming principles to define the "Account" class, which represents individual bank accounts.
+This C++ program simulates a client-side bank system. It allows users to become clients of a bank and provides functionality to create and manage bank accounts. The program utilizes object-oriented programming principles to define the "Account" class, which represents individual bank accounts.
 
 Upon running the program, users are presented with a menu where they can choose to create a new account, log in to an existing account, or quit the program.
 
