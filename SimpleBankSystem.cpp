@@ -107,22 +107,22 @@ void buffer() {
 }
 
 int main() {
-    int wanted, choice{}, login{}, size{}, capacity{1}, payee, amount;
-    string input, cmd, pw;
+    int wanted, login{}, size{}, capacity{1}, payee, amount;
+    string choice, input, cmd, pw;
     Account* acc{new Account[capacity]{}};
     system("clear"); // change to system("cls"); in Windows
     while (true) {
         system("clear"); // change to system("cls"); in Windows
-        cout << "1-Create a NEW Account" << endl;
-        cout << "2-Log In to Your Account" << endl;
-        cout << "3-Quit" << endl;
+        cout << "SIGNUP: Create a NEW Account" << endl;
+        cout << "LOGIN: Log In to An Existing Account" << endl;
+        cout << "QUIT: Quit" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
-        if (choice == 3) {
+        if (choice == "QUIT") {
             break;
         }
 
-        if (choice == 1) {
+        if (choice == "SIGNUP") {
             if (size == capacity - 1) {
                 capacity *= 2;
                 Account* new_arr = new Account[capacity]{};
@@ -137,9 +137,9 @@ int main() {
             system("clear");
             cout << "Account Registered Successfully! "<< "Welcome, " << acc[size - 1].returnFN() << "! Thank you for choosing us!" << endl;
             buffer();
-        } else if (choice == 2) {
+        } else if (choice == "LOGIN") {
             system("clear"); // change to system("cls"); in Windows
-            cout<<"Enter the ID(SIN) you want to find: ";   // To simplify the problem, use SIN as ID, assuming that SIN is unique
+            cout<<"Enter ID(SIN): ";   // To simplify the problem, use SIN as ID, assuming that SIN is unique
             cin >> wanted;
             login = search(acc,wanted,size); // Find the account
             if (login == NOT_FOUND) {
@@ -147,7 +147,7 @@ int main() {
                 buffer();
                 continue;
             }
-            cout << endl << "Please Enter the Password(Do NOT include WHITESPACE!): ";
+            cout << endl << "Password(Do NOT include WHITESPACE!): ";
             cin >> input;
             if (input != acc[login].returnPW()) {
                 cout << "Wrong Password!" << endl;
@@ -157,7 +157,7 @@ int main() {
                 while (true) {
                     system("clear");
                     cout << acc[login];
-                    cout << "Enter the options below to manage your account" << endl;
+                    cout << endl << "Enter the options below to manage your account" << endl;
                     cout << "RESET: Reset Your Password" << endl;
                     cout << "DEPOSIT: Make a Deposit" << endl;
                     cout << "WITHDRAW: Make a Withdraw" << endl;
@@ -173,13 +173,13 @@ int main() {
                         cout << "Password Updated!" << endl;
                         buffer();
                     } else if (cmd == "DEPOSIT") {
-                        cout << "Enter the amount you want to deposit: ";
+                        cout << "Enter the amount to deposit: ";
                         cin >> amount;
                         acc[login].depositBal(amount);
                         cout << "Deposit Alert: A Deposit of " << amount << " has been made from your accout " << acc[login].returnSIN() << endl;
                         buffer();
                     } else if (cmd == "WITHDRAW") {
-                        cout << "Enter the amount you want to withdraw: ";
+                        cout << "Enter the amount to withdraw: ";
                         cin >> amount;
                         if (acc[login].withBal(amount) == FAILURE) {
                             cout << "NOT SUFFICIENT FUNDS!";
