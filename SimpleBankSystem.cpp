@@ -31,9 +31,10 @@ public:
             getchar();
             getline(in, e.m_address);
             cout << "Enter the social insurance number: ";
-            in >> e.m_SIN;
+            in >> e.m_SIN; // assume every SIN is unique
             cout << "Enter the amount you want to deposit: ";
-            in >> e.m_deposit; //getting the data
+            in >> e.m_deposit;
+            if (e.m_deposit < 0) e.m_deposit = 0;
             cout << "Set up a password for your account(Do NOT include WHITESPACE!): ";
             in >> e.m_password;
         return in;
