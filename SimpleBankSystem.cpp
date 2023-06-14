@@ -107,7 +107,7 @@ void buffer() {
 }
 
 int main() {
-    int wanted, choice{}, login{}, size{}, capacity{1}, amount;
+    int wanted, choice{}, login{}, size{}, capacity{1}, payee, amount;
     string input, cmd, pw;
     Account* acc{new Account[capacity]{}};
     system("clear"); // change to system("cls"); in Windows
@@ -161,6 +161,7 @@ int main() {
                     cout << "RESET: Reset Your Password" << endl;
                     cout << "DEPOSIT: Make a Deposit" << endl;
                     cout << "WITHDRAW: Make a Withdraw" << endl;
+                    cout << "TRANSFER: Make a Transfer" << endl;
                     cout << "CLOSE: Close Your Account" << endl;
                     cout << "LOGOUT: Logout" << endl;
                     cout << "Select an option: ";
@@ -187,6 +188,28 @@ int main() {
                         }
                         cout << "Withdraw Alert: A withdraw of " << amount << " has been made from your account " << acc[login].returnSIN() << endl;
                         buffer();
+                    } else if (cmd == "TRANSFER") {
+                        cout << "Select A Payee(Enter ID): ";
+                        cin >> wanted;
+                        payee = search(acc, wanted, size);
+                        if (payee == NOT_FOUND) {
+                            cout << "The Account " << wanted << " does not exist";
+                            buffer();
+                            continue;
+                        } else {
+                            cout << "Enter the amount to transfer to " << acc[payee].returnFN() << ": ";
+                            cin >> amount;
+                            if (acc[login].withBal(amount) == FAILURE) {
+                                cout << "NOT SUFFICIENT FUNDS! Transaction Failed!";
+                                buffer();
+                                continue;
+                            } else {
+                                acc[payee].depositBal(amount);
+                                cout << acc[payee].returnFN() << " has received your transfer!";
+                                buffer();
+                                continue;
+                            }
+                        }
                     } else if (cmd == "CLOSE") {
                         for (int i = login; i < size - 1; ++i) {
                             acc[i] = acc[i + 1];
